@@ -10,41 +10,55 @@ import java.util.Date;
 
 public class HdfsUtils {
 
-    public static void main(String[] args) throws IOException {
-        System.out.println("============================================================");
-        FileSystem fileSystem = getFileSystem();
-        System.out.println("File System is " + fileSystem);
-        System.out.println("============================================================");
-        listDataNodeInfo();
-        System.out.println("============================================================");
-        checkFileExist("/test3");
-        System.out.println("============================================================");
-        mkdir("/test3");
-        System.out.println("============================================================");
-        checkFileExist("/test3");
-        System.out.println("============================================================");
-        delete("/test3");
-        System.out.println("============================================================");
-        mkdir("/test3");
-        System.out.println("============================================================");
-        uploadFile("/opt/kin/tmp/hadoop_temp.txt", "/");
-        System.out.println("============================================================");
-        downloadFile("/hadoop_temp.txt", "/opt/kin/tmp/hadoop_temp_remote.txt");
-        System.out.println("============================================================");
-        rename("/hadoop_temp.txt", "/test3/hadoop_temp_new.txt");
-        System.out.println("============================================================");
-        listDir("/user");
-        System.out.println("============================================================");
-        filter("/input/*", ".*impossible.*");
-        System.out.println("============================================================");
-        filter("/input/*", ".*word4.*");
-        System.out.println("============================================================");
-        getLocation("/test3/hadoop_temp_new.txt");
-        System.out.println("============================================================");
+    /**
+     * Exec cmd
+     * hadoop jar /hadoop/jar/hadoop-samples-1.0-SNAPSHOT.jar org.example.HdfsUtils
+     *
+     * Caution: main method cannot throw statment, otherwise cannot be treated as a jar file executed by haddoop
+     * @param args
+     */
+    public static void main(String[] args) {
+        try {
+            System.out.println("============================================================");
+            FileSystem fileSystem = getFileSystem();
+            System.out.println("File System is " + fileSystem);
+            System.out.println("============================================================");
+            listDataNodeInfo();
+            System.out.println("============================================================");
+            checkFileExist("/test3");
+            System.out.println("============================================================");
+            mkdir("/test3");
+            System.out.println("============================================================");
+            checkFileExist("/test3");
+            System.out.println("============================================================");
+            delete("/test3");
+            System.out.println("============================================================");
+            mkdir("/test3");
+            System.out.println("============================================================");
+            uploadFile("/opt/kin/tmp/hadoop_temp.txt", "/");
+            System.out.println("============================================================");
+            downloadFile("/hadoop_temp.txt", "/opt/kin/tmp/hadoop_temp_remote.txt");
+            System.out.println("============================================================");
+            rename("/hadoop_temp.txt", "/test3/hadoop_temp_new.txt");
+            System.out.println("============================================================");
+            listDir("/user");
+            System.out.println("============================================================");
+            filter("/input/*", ".*impossible.*");
+            System.out.println("============================================================");
+            filter("/input/*", ".*word4.*");
+            System.out.println("============================================================");
+            getLocation("/test3/hadoop_temp_new.txt");
+            System.out.println("============================================================");
+            delete("/test3");
+            System.out.println("============================================================");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
      * 获得文件系统对象
+     *
      * @return
      * @throws IOException
      */
@@ -63,6 +77,7 @@ public class HdfsUtils {
 
     /**
      * 列出数据节点名字信息
+     *
      * @throws IOException
      */
     public static void listDataNodeInfo() throws IOException {
@@ -85,6 +100,7 @@ public class HdfsUtils {
 
     /**
      * 创建目录
+     *
      * @param path
      * @throws IOException
      */
@@ -103,6 +119,7 @@ public class HdfsUtils {
 
     /**
      * 删除文件
+     *
      * @param filePath
      * @throws IOException
      */
@@ -120,6 +137,7 @@ public class HdfsUtils {
 
     /**
      * 检查文件是否存在
+     *
      * @param filePath
      * @throws IOException
      */
@@ -141,6 +159,7 @@ public class HdfsUtils {
 
     /**
      * 上传文件到HDFS
+     *
      * @param src
      * @param dest
      * @throws IOException
@@ -157,6 +176,7 @@ public class HdfsUtils {
 
     /**
      * 丛HDFS下载文件
+     *
      * @param remote
      * @param local
      * @throws IOException
@@ -172,6 +192,7 @@ public class HdfsUtils {
 
     /**
      * 重命名
+     *
      * @param oldName
      * @param newName
      * @throws IOException
@@ -191,6 +212,7 @@ public class HdfsUtils {
 
     /**
      * 遍历目录
+     *
      * @param dir
      * @throws IOException
      */
@@ -240,6 +262,7 @@ public class HdfsUtils {
 
     /**
      * 指定路径和过滤条件
+     *
      * @param path
      * @param filter
      * @throws IOException
@@ -259,6 +282,7 @@ public class HdfsUtils {
 
     /**
      * 获得数据块所在位置
+     *
      * @param path
      * @throws IOException
      */
