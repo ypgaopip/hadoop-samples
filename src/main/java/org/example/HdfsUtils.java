@@ -14,7 +14,7 @@ public class HdfsUtils {
      * Exec cmd
      * hadoop jar /hadoop/jar/hadoop-samples-1.0-SNAPSHOT.jar org.example.HdfsUtils
      * <p>
-     * Caution: main method cannot throw statment, otherwise cannot be treated as a jar file executed by haddoop
+     * Caution: main method cannot throw statement, otherwise cannot be treated as a jar file executed by hadoop
      *
      * @param args
      */
