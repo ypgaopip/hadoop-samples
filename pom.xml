@@ -53,6 +53,20 @@
             <version>8.0.21</version>
         </dependency>
 
+        <!-- HBase依赖 -->
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-client</artifactId>
+            <version>2.5.6-hadoop3</version>
+        </dependency>
+
+        <!-- HBase依赖 协处理器 -->
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-endpoint</artifactId>
+            <version>2.5.6-hadoop3</version>
+        </dependency>
+
     </dependencies>
 
 
